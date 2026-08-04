@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building the World's Leading Natural Perfumery House | Nuhoud</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#9A7235;--gold-light:rgba(154,114,53,0.08);--gold-line:rgba(154,114,53,0.15);
+  --cream:#FFFDF7;--cream2:#FAF6EE;--charcoal:#2A2018;--muted:#7A6A58;--text:#6A5A4A;
+  --font-serif:Cormorant Garamond,Georgia,serif;--font-sans:Inter,-apple-system,system-ui,sans-serif;
+}
+html,body{height:100%;background:#FFFDF7;font-family:var(--font-sans);color:var(--charcoal);overflow:hidden}
+.presentation{width:100%;height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;padding:48px 24px;position:relative}
+.slide:nth-child(odd){background:#FFFDF7}
+.slide:nth-child(even){background:#FAF6EE}
+.slide-inner{max-width:1080px;width:100%;position:relative;z-index:2}
+.slide-number{font-family:var(--font-serif);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);opacity:0.6;margin-bottom:24px;font-weight:400}
+.slide-title{font-family:var(--font-serif);font-size:clamp(28px,4vw,42px);font-weight:300;line-height:1.2;color:var(--charcoal);margin-bottom:40px;letter-spacing:0.02em}
+.slide-content{display:flex;flex-direction:column;gap:20px}
+.label-tag{font-family:var(--font-sans);font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;padding:5px 10px;border:1px solid rgba(154,114,53,0.3);display:inline-block}
+.section-heading{font-family:var(--font-serif);font-size:26px;font-weight:400;line-height:1.25;color:var(--charcoal);letter-spacing:0.02em}
+.body-text{color:var(--text);line-height:1.8;font-family:var(--font-sans);font-size:14px}
+.italic-quote{font-family:var(--font-serif);font-style:italic;color:var(--muted);line-height:1.6;font-size:18px}
+.card-light{background:#fff;border:1px solid rgba(154,114,53,0.12);border-radius:16px;padding:28px;box-shadow:0 2px 20px rgba(42,32,24,0.04)}
+.card-light .section-heading{font-size:22px}
+.card-light .body-text{font-size:13px}
+.stat-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-box{display:flex;flex-direction:column;align-items:center;text-align:center;padding:20px;background:#fff;border:1px solid rgba(154,114,53,0.12);border-radius:12px;box-shadow:0 2px 16px rgba(42,32,24,0.04)}
+.metric-number{font-family:var(--font-serif);font-size:38px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:8px}
+.metric-label{font-family:var(--font-sans);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.slide-content strong{color:var(--charcoal);font-weight:600}
+.cover-slide{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:80vh;background:#FFFDF7}
+.cover-ornament{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:32px auto;opacity:0.4}
+.cover-ornament.bottom{margin-top:48px;margin-bottom:0}
+.cover-text{max-width:700px}
+.cover-eyebrow{font-family:var(--font-sans);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;font-weight:400}
+.cover-title{font-family:var(--font-serif);font-size:clamp(40px,7vw,72px);font-weight:300;color:var(--charcoal);line-height:1.1;letter-spacing:0.02em;margin-bottom:32px}
+.cover-title br{display:block;margin-top:8px}
+.cover-tagline{font-family:var(--font-serif);font-size:16px;font-style:italic;color:var(--muted);margin-bottom:16px}
+.cover-year{font-family:var(--font-serif);font-size:13px;letter-spacing:0.4em;color:var(--gold);opacity:0.6}
+.nav-hint{position:fixed;bottom:24px;right:24px;background:#fff;border:1px solid rgba(154,114,53,0.25);border-radius:40px;padding:10px 20px;font-family:var(--font-sans);font-size:11px;letter-spacing:0.12em;color:var(--gold);opacity:0.7;z-index:100;box-shadow:0 2px 12px rgba(42,32,24,0.08)}
+@media(max-width:640px){.slide{padding:32px 16px}.stat-row{grid-template-columns:1fr}.cover-title{font-size:36px}.section-heading{font-size:22px}.metric-number{font-size:30px}}
+</style>
+</head>
+<body>
+<div class="presentation">
+
+
+  <section class="slide" data-slide="1">
+    <div class="slide-inner cover-slide">
+      <div class="cover-ornament"></div>
+      <div class="cover-text">
+        <div class="cover-eyebrow">A Strategic Partnership Proposal</div>
+        <h1 class="cover-title">Building the World&apos;s Leading<br>Natural Perfumery House</h1>
+        <div class="cover-tagline">Nuhoud</div>
+        
+      </div>
+      <div class="cover-ornament bottom"></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="2">
+    <div class="slide-inner cover-slide" style="background:linear-gradient(180deg,rgba(10,8,6,0.85) 0%,rgba(20,16,12,0.75) 50%,rgba(10,8,6,0.85) 100%),url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="g1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%234a3728"/><stop offset="100%25" style="stop-color:%232a1f15"/></linearGradient></defs><rect fill="url(%23g1)" width="1200" height="800"/><circle cx="900" cy="400" r="300" fill="%239A7235" opacity="0.1"/><circle cx="300" cy="600" r="200" fill="%239A7235" opacity="0.05"/></svg>') center/cover no-repeat rgba(15,12,8,0.92);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px;">
+      <div style="max-width:900px;margin:0 auto;">
+        <div style="font-family:var(--font-sans);font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:48px;opacity:0.8;">Why We Exist</div>
+        
+        <div style="font-family:Cormorant Garamond,serif;font-size:clamp(28px,4vw,48px);font-weight:400;font-style:italic;line-height:1.4;color:#FFFDF7;margin-bottom:48px;letter-spacing:0.02em;">
+          "NUHOUD was never created to sell perfume.<br>It was created to preserve one of the world's<br>greatest forgotten crafts."
+        </div>
+        
+        <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 48px;"></div>
+        
+        <div style="font-family:var(--font-sans);font-size:15px;line-height:1.9;color:rgba(255,253,247,0.7);max-width:720px;margin:0 auto 64px;font-weight:300;">
+          The luxury fragrance industry has become increasingly disconnected from the origins of its most precious materials. NUHOUD exists to reconnect people with the complete journey of natural perfumery, from ancient agarwood forests and traditional distillation, to rare oud oils, attars, and perfumes crafted without compromise. Every creation begins with nature, not marketing.
+        </div>
+        
+        <div style="border-top:1px solid rgba(154,114,53,0.3);padding-top:40px;margin-top:20px;">
+          <div style="font-family:var(--font-sans);font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0.7;">Our Mission</div>
+          <div style="font-family:Cormorant Garamond,serif;font-size:18px;font-style:italic;line-height:1.6;color:rgba(255,253,247,0.85);max-width:600px;margin:0 auto;">
+            To become the world's most respected house of natural perfumery by preserving heritage, creating extraordinary fragrances, and educating future generations about the true art of oud.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>data-slide="3">
+    <div class="slide-inner">
+      <div class="slide-number">3</div>
+      <div class="slide-title">The Opportunity</div>
+      <div class="slide-content"><div class="label-tag">Market Gap</div><div class="section-heading" style="font-size:28px">The Middle East perfume market is AED 8.5 billion and growing &mdash; but most brands fall into one of two extremes.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">Mass Market</div><div class="body-text" style="font-size:13px">Affordable, synthetic fragrances. High volume, low loyalty. No story. No soul.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">European Luxury</div><div class="body-text" style="font-size:13px">Prestige brands priced beyond most Gulf consumers. Heritage feels distant and foreign.</div></div></div></div><div class="body-text" style="font-size:14px">There is a significant gap in the market for a brand that combines Arabian heritage, authentic natural ingredients, modern sensibility, and premium luxury &mdash; anchored by a trusted name.</div><div class="card-light"><div class="section-heading" style="font-size:26px">Nuhoud + Atiq fills this space.</div><div class="italic-quote" style="font-size:20px">Arabian soul. Universal appeal. Exceptional margins.</div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="4">
+    <div class="slide-inner">
+      <div class="slide-number">4</div>
+      <div class="slide-title">Why Nuhoud Wins</div>
+      <div class="slide-content"><div class="label-tag">Competitive Moat</div><div class="section-heading" style="font-size:28px">Four generations of trust cannot be bought &mdash; only built.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">16 Years of Mastery</div><div class="body-text" style="font-size:13px">Since 2010, refining the craft of Arabian perfumery with rare ingredients sourced directly from Arabia and beyond.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">4th Generation Oudh & Fragrance</div><div class="body-text" style="font-size:13px">Family heritage passed down through four generations. The face behind the brand is the brand.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">50,000+ Loyal Customers</div><div class="body-text" style="font-size:13px">Built through word of mouth, trust, and consistent quality &mdash; not advertising spend.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Rare Ingredient Access</div><div class="body-text" style="font-size:13px">Direct source of oud, musk, rose, and ambergris. The most powerful and best quality oud oil production in the world.</div></div></div></div><div class="body-text" style="font-size:14px">This foundation is what makes Atiq credible from day one. Every Atiq customer is a potential Nuhoud customer, and vice versa.</div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="5">
+    <div class="slide-inner">
+      <div class="slide-number">5</div>
+      <div class="slide-title">What Makes Us Different</div>
+      <div class="slide-content"><div class="label-tag">The Full Journey</div><div class="section-heading" style="font-size:28px">At Nuhoud &mdash; we sell the story.</div><div class="card-light"><div class="body-text" style="font-size:15px">Every bottle carries four generations of oudh and fragrance perfumery knowledge, rare Arabian ingredients, and a promise of authenticity that no international brand can replicate.</div></div><div class="section-heading" style="font-size:28px">At Atiq &mdash; we sell the experience.</div><div class="card-light"><div class="body-text" style="font-size:15px">A contemporary expression of Arabian luxury &mdash; serving the ultra premium segment without compromising the quality or story that makes the house credible.</div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:22px">Nuhoud</div><div class="label-tag">Premium Heritage</div><div class="body-text" style="font-size:13px">Rare ingredients. Prestige pricing. Collector's editions.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:22px">Atiq</div><div class="label-tag">Ultra Premium</div><div class="body-text" style="font-size:13px">Natural quality. Modern design. Broader reach.</div></div></div></div><div class="body-text" style="font-size:14px">The two brands cross-pollinate: Atiq customers aspire to Nuhoud. Nuhoud customers gift Atiq.</div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="6">
+    <div class="slide-inner">
+      <div class="slide-number">6</div>
+      <div class="slide-title">The Investment</div>
+      <div class="slide-content"><div class="label-tag">AED 3,000,000 over 24 months</div><div class="section-heading" style="font-size:26px">The investment unlocks five strategic capabilities.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">AED 600K</div><div class="label-tag">Raw Materials & Ingredients</div><div class="body-text" style="font-size:12px">Oud, Saffron, Rose, Amber &mdash; strategic stock for 24 months of production at scale.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">AED 500K</div><div class="label-tag">Distillation & Production</div><div class="body-text" style="font-size:12px">Investment in our own distillation capacity, reducing dependency and cost per unit.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">AED 400K</div><div class="label-tag">Research & Formulation</div><div class="body-text" style="font-size:12px">New Atiq fragrance development, stability testing, and product refinement.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">AED 500K</div><div class="label-tag">Brand & Marketing</div><div class="body-text" style="font-size:12px">Brand identity, packaging, Middle East marketing campaign, influencer partnerships.</div></div></div></div><div class="card-light"><div class="section-heading" style="font-size:20px">AED 1,000,000</div><div class="label-tag">Infrastructure & Operations</div><div class="body-text" style="font-size:12px">Middle East distribution, logistics, e-commerce platform, team expansion, compliance.</div></div><div class="body-text" style="font-size:13px">This is not an investment in a startup. It is an investment in an existing, profitable business with a clear path to scaling.</div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="7">
+    <div class="slide-inner">
+      <div class="slide-number">7</div>
+      <div class="slide-title">The Business Model</div>
+      <div class="slide-content"><div class="label-tag">Dual Brand Architecture</div><div class="section-heading" style="font-size:26px">Two houses. One vision. Maximum market coverage.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Nuhoud</div><div class="label-tag">Premium Tier</div><div class="body-text" style="font-size:12px">&bull; Custom blends & rare ingredients<br>&bull; Premium pricing (AED 500&ndash;5,000)<br>&bull; Collectors, connoisseurs, gifting<br>&bull; Direct sales + exclusive retail</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Atiq</div><div class="label-tag">Ultra Premium Tier</div><div class="body-text" style="font-size:12px">&bull; Natural ingredients, modern design<br>&bull; Ultra premium pricing (AED 500+)<br>&bull; Ultra high net worth customers<br>&bull; Retail + e-commerce + wholesale</div></div></div></div><div class="section-heading" style="font-size:22px">Revenue Streams</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Retail Sales</strong><br>Direct and wholesale across the Middle East</div></div></div><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Wholesale & B2B</strong><br>Department stores, boutiques, hotels</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Corporate & Gifting</strong><br>B2B fragrance programs</div></div></div><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Online</strong><br>E-commerce across Middle East and beyond</div></div></div></div></div>
+    </div>
+  </section>
+
+  <section class="slide" data-slide="8">
+    <div class="slide-inner">
+      <div class="slide-number">8</div>
+      <div class="slide-title">Why Margins Can Be Exceptional</div>
+      <div class="slide-content"><div class="label-tag">Unit Economics</div><div class="section-heading" style="font-size:26px">Natural ingredients + trusted brand + direct relationships = exceptional margins.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:24px">75-85%</div><div class="label-tag">Gross Margin</div><div class="body-text" style="font-size:12px">Rare ingredients in small quantities command premium prices. No middlemen in our supply chain.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:24px">25-40%</div><div class="label-tag">Net Margin</div><div class="body-text" style="font-size:12px">After marketing, operations, and distribution &mdash; consistent with premium European perfume houses.</div></div></div></div><div class="section-heading" style="font-size:20px">Why This is Defensible</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Own the supply chain.</strong><br>We source directly &mdash; Oud from Arabia, Rose from Kashmir, Saffron from Iran. No middlemen means lower costs and better quality.</div></div></div><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Brand is the moat.</strong><br>50,000+ loyal customers built through 16 years of trust. Marketing spend as a percentage of revenue can remain low.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Scalable without heavy investment.</strong><br>Each new fragrance is a new SKU, not a new business. Production scales with demand.</div></div></div><div class="stat-box"><div class="card-light"><div class="body-text" style="font-size:13px"><strong>Atiq accelerates volume.</strong><br>Premium positioning builds lasting relationships with the Nuhoud family orbit, increasing lifetime value.</div></div></div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="9">
+    <div class="slide-inner">
+      <div class="slide-number">9</div>
+      <div class="slide-title">Why Story Creates Value</div>
+      <div class="slide-content"><div class="label-tag">Emotional Architecture</div><div class="section-heading" style="font-size:26px">Customers buy stories. They remember feelings. They remain loyal to identity.</div><div class="card-light"><div class="section-heading" style="font-size:24px">The Nuhoud Story</div><div class="body-text" style="font-size:14px">Four generations of oudh and fragrance mastery. A family whose name is synonymous with authenticity. Oud that is not just a note in a fragrance &mdash; it is a heritage carried in a bottle.</div></div><div class="card-light"><div class="section-heading" style="font-size:24px">The Atiq Story</div><div class="body-text" style="font-size:14px">A contemporary Arabian luxury house that honors its roots while reaching forward. For those who seek the extraordinary, without compromising the soul of the brand.</div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Story = Premium</div><div class="body-text" style="font-size:13px">Hermes Birkin. Rolex. Nuhoud.<br>Customers pay more when they believe in the story.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Story = Loyalty</div><div class="body-text" style="font-size:13px">16 years of word-of-mouth growth.<br>Customers become ambassadors when they believe.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Story = Margin</div><div class="body-text" style="font-size:13px">A great story allows premium pricing without discounting. Margin protection through identity.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Story = Expansion</div><div class="body-text" style="font-size:13px">Atiq carries the Nuhoud credibility to new customers and markets without diluting the premium.</div></div></div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="10">
+    <div class="slide-inner">
+      <div class="slide-number">10</div>
+      <div class="slide-title">The Community</div>
+      <div class="slide-content"><div class="label-tag">Beyond Customers &mdash; A Community of Believers</div><div class="section-heading" style="font-size:26px">50,000 customers. Every one of them an ambassador.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Deep Loyalty</div><div class="body-text" style="font-size:13px">Our customers do not just buy fragrance &mdash; they buy into a tradition. They return, they refer, they collect.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Word of Mouth Engine</div><div class="body-text" style="font-size:13px">Zero marketing budget in the early years. Growth built entirely on product quality and trust.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Middle East Identity</div><div class="body-text" style="font-size:13px">In a market saturated with European brands, Nuhoud is a homegrown choice. This identity resonates deeply.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Social Amplification</div><div class="body-text" style="font-size:13px">Instagram, WhatsApp, and personal gifting networks spread the brand organically across the Gulf.</div></div></div></div><div class="section-heading" style="font-size:22px">Atiq leverages this community immediately.</div><div class="body-text" style="font-size:14px">Every Nuhoud customer is a warm audience for Atiq. The Atiq launch does not start from zero &mdash; it starts from 50,000.</div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="11">
+    <div class="slide-inner">
+      <div class="slide-number">11</div>
+      <div class="slide-title">Competitive Position</div>
+      <div class="slide-content"><div class="label-tag">Market Landscape</div><div class="section-heading" style="font-size:26px">We occupy a unique space: Arabian heritage + natural ingredients + premium luxury.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">Vs. European Luxury Houses</div><div class="body-text" style="font-size:12px">Cartier, Dior, Tom Ford.<br>Prestige, but no Arabian soul. Pricey and distant from Gulf identity.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">Vs. Mass Market Middle East Brands</div><div class="body-text" style="font-size:12px">Afnan, Awsat, Al Halal.<br>Affordable but synthetic. No heritage story, low loyalty.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">Vs. Niche Arabian Houses</div><div class="body-text" style="font-size:12px">Arabian Oudh brands.<br>Often expensive but inconsistent quality. Limited modern design.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:18px">NUHOUD + ATIQ</div><div class="body-text" style="font-size:12px"><strong>Heritage.</strong> <strong>Quality.</strong> <strong>Story.</strong><br>Modern presentation. Ultra premium range. Middle East identity.</div></div></div></div><div class="section-heading" style="font-size:22px">Positioning Statement</div><div class="card-light"><div class="section-heading" style="font-size:24px">&ldquo;The authentic Arabian perfumery house &mdash; where heritage meets ultra luxury.&rdquo;</div><div class="italic-quote" style="font-size:20px">Nuhoud for those who seek the finest. Atiq for those who seek elegance.</div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="12">
+    <div class="slide-inner">
+      <div class="slide-number">12</div>
+      <div class="slide-title">Five-Year Vision</div>
+      <div class="slide-content"><div class="label-tag">2026 &mdash; 2031 Roadmap</div><div class="section-heading" style="font-size:26px">From one perfumery house to a portfolio of Arabian luxury brands.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Year 1-2</div><div class="label-tag">Foundation</div><div class="body-text" style="font-size:12px">&bull; Launch Atiq across the Middle East<br>&bull; Expand Nuhoud premium line<br>&bull; Build distribution in UAE, KSA, Qatar<br>&bull; Open 2&ndash;3 brand-owned boutiques</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Year 2-3</div><div class="label-tag">Expansion</div><div class="body-text" style="font-size:12px">&bull; Expand to Bahrain, Kuwait, Oman<br>&bull; Launch Atiq e-commerce platform<br>&bull; Begin hotel & hospitality partnerships<br>&bull; Develop corporate gifting program</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Year 3-4</div><div class="label-tag">Scale</div><div class="body-text" style="font-size:12px">&bull; 15+ retail points across the Middle East<br>&bull; 5 brand boutiques<br>&bull; B2B fragrance programs<br>&bull; Online-first markets (Middle East expats)</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">Year 5</div><div class="label-tag">Portfolio</div><div class="body-text" style="font-size:12px">&bull; Nuhoud + Atiq as dual flagship<br>&bull; Third brand exploration<br>&bull; Franchise-ready model<br>&bull; Regional distribution partner network</div></div></div></div><div class="card-light"><div class="section-heading" style="font-size:26px">AED 25M+ Revenue by Year 5</div><div class="body-text" style="font-size:14px">Based on conservative retail expansion and e-commerce growth across the Middle East.</div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="13">
+    <div class="slide-inner">
+      <div class="slide-number">13</div>
+      <div class="slide-title">Why This Opportunity Is Unique</div>
+      <div class="slide-content"><div class="label-tag">The Rare Combination</div><div class="section-heading" style="font-size:26px">This opportunity exists at the intersection of three things that rarely align.</div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">1. Authentic Heritage</div><div class="body-text" style="font-size:13px">Four generations of oudh and fragrance mastery. A name that cannot be invented or purchased. This takes 16 years to build and cannot be replicated.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">2. Proven Business</div><div class="body-text" style="font-size:13px">50,000+ customers. Profitable operations. Real revenue. This is not a concept on a slide &mdash; it is a business with a track record and a loyal following.</div></div></div></div><div class="stat-row"><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">3. Middle East Market Timing</div><div class="body-text" style="font-size:13px">The Gulf consumer is increasingly seeking authenticity over prestige labels. Homegrown Arabian luxury is at the beginning of its moment.</div></div></div><div class="stat-box"><div class="card-light"><div class="section-heading" style="font-size:20px">4. Clear Path to Scale</div><div class="body-text" style="font-size:13px">Atiq takes Nuhoud's credibility and extends it to a much larger market. Two brands, one foundation, maximum leverage.</div></div></div></div><div class="card-light"><div class="section-heading" style="font-size:26px">You are not funding an idea.</div><div class="section-heading" style="font-size:26px">You are investing in a business that is ready to scale.</div></div></div>
+    </div>
+  </section>
+  <section class="slide" data-slide="14">
+    <div class="slide-inner">
+      <div class="slide-number">14</div>
+      <div class="slide-title">Join the Next Chapter</div>
+      <div class="slide-content"><div class="label-tag">Closing Statement</div><div class="section-heading" style="font-size:38px">We are building the most respected,<br>not the biggest.</div><div class="card-light"><div class="body-text" style="font-size:16px">We are not interested in becoming the largest perfume brand in the Middle East.<br>We are interested in becoming the most trusted, the most loved, the most sought-after.<br><br>Every decision we make &mdash; from ingredient sourcing to bottle design to customer interaction &mdash; is guided by this principle.</div></div><div class="section-heading" style="font-size:26px">The AED 3 Million</div><div class="body-text" style="font-size:14px">This investment is not about turning AED 3 million into AED 10 million.<br>It is about giving this family the resources to share their craft, their heritage, and their story with the world &mdash; at a scale that honors both.</div><div class="card-light"><div class="section-heading" style="font-size:26px">We invite you to be part of this story.</div><div class="italic-quote" style="font-size:20px">Nuhoud &middot; Atiq</div></div></div>
+    </div>
+  </section>
+
+  <!-- Navigation hint -->
+  <div class="nav-hint">↓ Scroll or swipe to navigate</div>
+</div>
+<script>
+// Smooth scroll snap
+document.querySelector('.presentation').addEventListener('wheel', (e) => {
+  const pres = document.querySelector('.presentation');
+  const slides = document.querySelectorAll('.slide');
+  const current = [...slides].findIndex(s => {
+    const r = s.getBoundingClientRect();
+    return r.top >= -50 && r.top <= 50;
+  });
+  if (e.deltaY > 0 && current < slides.length - 1) {
+    e.preventDefault();
+    slides[current + 1].scrollIntoView({behavior: 'smooth'});
+  } else if (e.deltaY < 0 && current > 0) {
+    e.preventDefault();
+    slides[current - 1].scrollIntoView({behavior: 'smooth'});
+  }
+}, {passive: false});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  const slides = document.querySelectorAll('.slide');
+  const current = [...slides].findIndex(s => {
+    const r = s.getBoundingClientRect();
+    return r.top >= -50 && r.top <= 50;
+  });
+  if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') {
+    e.preventDefault();
+    if (current < slides.length - 1) slides[current + 1].scrollIntoView({behavior: 'smooth'});
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    if (current > 0) slides[current - 1].scrollIntoView({behavior: 'smooth'});
+  } else if (e.key === 'Home') {
+    e.preventDefault();
+    slides[0].scrollIntoView({behavior: 'smooth'});
+  } else if (e.key === 'End') {
+    e.preventDefault();
+    slides[slides.length - 1].scrollIntoView({behavior: 'smooth'});
+  }
+});
+
+// IntersectionObserver for slide tracking
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const slide = entry.target;
+      const num = slide.dataset.slide;
+      // Could add analytics or progress indicator here
+    }
+  });
+}, {threshold: 0.5});
+document.querySelectorAll('.slide').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
