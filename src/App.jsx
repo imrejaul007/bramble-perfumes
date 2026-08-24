@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
-  ChevronLeft, ChevronRight, ArrowRight, Crown, Shield, Gem, Award, Leaf,
-  Globe, Heart, Droplets, Flower2, Star, CheckCircle2, Phone, Mail, MapPin, Check, BookOpen
+  ChevronLeft, ChevronRight, ArrowRight, Crown, Award,
+  Globe, Heart, Droplets, Star, CheckCircle2, Phone, Mail, Check, BookOpen
 } from 'lucide-react'
-import StoryPortal from './StoryPortal'
 
 const SLIDES = [
   { id: 'cover', label: '' },
@@ -30,8 +30,6 @@ const fu = {
 
 export default function App() {
   const [slide, setSlide] = useState(0)
-  const [showPortal, setShowPortal] = useState(false)
-  const containerRef = useRef(null)
 
   useEffect(() => {
     const onKey = (e) => {
@@ -48,22 +46,18 @@ export default function App() {
     if (el) el.scrollIntoView({ behavior: 'smooth' })
   }
 
-  if (showPortal) {
-    return <StoryPortal />
-  }
-
   return (
-    <div ref={containerRef} className="relative" style={{background:'#FFFDF7'}}>
+    <div className="relative" style={{background:'#FFFDF7'}}>
 
       {/* ── NAV ── */}
       <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4"
         style={{background:'rgba(255,253,247,0.92)', backdropFilter:'blur(12px)', borderBottom:'1px solid rgba(154,114,53,0.12)'}}>
         <div className="flex items-center gap-4">
           <div className="font-serif text-lg tracking-tight text-charcoal-800" style={{fontFamily:'Playfair Display,serif'}}>NUHOUD</div>
-          <button onClick={() => setShowPortal(true)} className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all hover:bg-amber-100" style={{color:'#9A7235'}}>
+          <Link to="/story" className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs transition-all hover:bg-amber-100" style={{color:'#9A7235'}}>
             <BookOpen size={14} />
             <span className="hidden sm:inline">Story Portal</span>
-          </button>
+          </Link>
         </div>
         <div className="hidden md:flex items-center gap-1">
           {SLIDES.map((s, i) => s.label && (

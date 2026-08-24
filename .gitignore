@@ -1,1 +1,27 @@
-.vercel
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel/
+
+# Binary presentation files (never track these)
+*.key
+*.pdf
+*.pptx
+*.ppt
+
+# Generated analysis / raw text files
+chapters-original.txt
+nuhoud-proposal.html
+
+# Environment variables
+.env
+.env.*
+!.env.example
