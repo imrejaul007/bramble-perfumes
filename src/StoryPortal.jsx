@@ -1637,7 +1637,7 @@ export default function StoryPortal() {
                 <List size={20} />
               </button>
             )}
-            <h1 className="text-2xl font-light tracking-[0.3em]" style={{fontFamily:'Playfair Display,serif', color: headingColor}}>{story.title}</h1>
+            <h1 className="text-2xl font-light tracking-[0.3em]" style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color: headingColor}}>{story.title}</h1>
           </div>
           <div className="flex items-center gap-2">
             <div className="sm:hidden flex items-center gap-1">
@@ -1894,14 +1894,26 @@ export default function StoryPortal() {
               className="prose prose-lg max-w-none"
             >
               <div
+                className="chapter-content"
                 style={{
-                  fontFamily:'Cormorant Garamond,serif',
+                  fontFamily:'DM Sans, sans-serif',
                   color: textColor,
                   lineHeight: currentTextSize.lineHeight,
-                  fontSize: currentTextSize.fontSize
+                  fontSize: currentTextSize.fontSize,
+                  fontWeight: '400',
+                  letterSpacing: '0.01em'
                 }}
                 dangerouslySetInnerHTML={{ __html: currentChapter?.content || '' }}
               />
+              <style>{`
+                .chapter-content p strong {
+                  font-family: 'Cormorant Garamond', serif;
+                  font-weight: 600;
+                  display: block;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.75rem;
+                }
+              `}</style>
             </motion.div>
           )}
         </div>
