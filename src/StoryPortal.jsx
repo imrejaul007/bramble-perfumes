@@ -1637,7 +1637,7 @@ export default function StoryPortal() {
                 <List size={20} />
               </button>
             )}
-            <h1 className="text-2xl font-light tracking-[0.3em]" style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color: headingColor}}>{story.title}</h1>
+            <h1 className="font-light tracking-[0.3em]" style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color: headingColor, fontSize:'31px'}}>{story.title}</h1>
           </div>
           <div className="flex items-center gap-2">
             <div className="sm:hidden flex items-center gap-1">
