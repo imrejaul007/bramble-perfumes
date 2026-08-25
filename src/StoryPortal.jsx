@@ -1909,9 +1909,12 @@ export default function StoryPortal() {
                 .chapter-content p strong {
                   font-family: 'Cormorant Garamond', serif;
                   font-weight: 600;
+                  font-size: 1.5em;
                   display: block;
-                  margin-top: 1.5rem;
-                  margin-bottom: 0.75rem;
+                  margin-top: 2rem;
+                  margin-bottom: 1rem;
+                  line-height: 1.3;
+                  letter-spacing: 0.01em;
                 }
               `}</style>
             </motion.div>
