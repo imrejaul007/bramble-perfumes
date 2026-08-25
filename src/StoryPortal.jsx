@@ -1422,8 +1422,52 @@ const DEFAULT_STORY = {
   ]
 };
 
-// Storage key for localStorage
+// Storage keys for localStorage
 const STORAGE_KEY = 'nuhoud-story-portal';
+const TEXT_SIZE_KEY = 'nuhoud-text-size';
+const DARK_MODE_KEY = 'nuhoud-dark-mode';
+
+// Text size options
+const TEXT_SIZES = [
+  { label: 'Small', value: 'small', fontSize: '16px', lineHeight: '1.9' },
+  { label: 'Default', value: 'default', fontSize: '18px', lineHeight: '2' },
+  { label: 'Large', value: 'large', fontSize: '20px', lineHeight: '2.1' },
+  { label: 'X-Large', value: 'xlarge', fontSize: '22px', lineHeight: '2.2' },
+];
+
+// Load text size from localStorage
+const loadTextSize = () => {
+  try {
+    const stored = localStorage.getItem(TEXT_SIZE_KEY);
+    if (stored && TEXT_SIZES.find(s => s.value === stored)) {
+      return stored;
+    }
+  } catch (e) {}
+  return 'default';
+};
+
+// Save text size to localStorage
+const saveTextSize = (size) => {
+  try {
+    localStorage.setItem(TEXT_SIZE_KEY, size);
+  } catch (e) {}
+};
+
+// Load dark mode from localStorage
+const loadDarkMode = () => {
+  try {
+    const stored = localStorage.getItem(DARK_MODE_KEY);
+    return stored === 'true';
+  } catch (e) {}
+  return false;
+};
+
+// Save dark mode to localStorage
+const saveDarkMode = (isDark) => {
+  try {
+    localStorage.setItem(DARK_MODE_KEY, isDark.toString());
+  } catch (e) {}
+};
 
 // Load story from localStorage or use default
 const loadStory = () => {
@@ -1470,8 +1514,13 @@ export default function StoryPortal() {
   const [showChapterNav, setShowChapterNav] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [showChapterList, setShowChapterList] = useState(false);
+  const [textSize, setTextSize] = useState(() => loadTextSize());
+  const [isDarkMode, setIsDarkMode] = useState(() => loadDarkMode());
   const contentRef = useRef(null);
   const isEditingRef = useRef(false);
+
+  // Get current text size settings
+  const currentTextSize = TEXT_SIZES.find(s => s.value === textSize) || TEXT_SIZES[1];
 
   // Handle window resize
   useEffect(() => {
@@ -1558,28 +1607,149 @@ export default function StoryPortal() {
 
   const currentChapter = story.chapters[activeChapter];
 
+  // Dark mode styles
+  const bgColor = isDarkMode ? '#1A1A1A' : '#FFFDF7';
+  const textColor = isDarkMode ? '#E8E0D5' : '#5A4A38';
+  const headingColor = isDarkMode ? '#F5F0E8' : '#2A2018';
+  const mutedColor = isDarkMode ? '#8A8078' : '#9A8A78';
+  const borderColor = isDarkMode ? 'rgba(154,114,53,0.2)' : 'rgba(154,114,53,0.12)';
+  const headerBg = isDarkMode ? 'rgba(26,26,26,0.95)' : 'rgba(255,253,247,0.92)';
+  const navGradient = isDarkMode
+    ? 'linear-gradient(to top, #1A1A1A 60%, transparent)'
+    : 'linear-gradient(to top, #FFFDF7 60%, transparent)';
+
   return (
-    <div className="min-h-screen" style={{background:'#FFFDF7'}}>
+    <div className="min-h-screen" style={{background: bgColor}}>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50" style={{background:'rgba(255,253,247,0.92)', backdropFilter:'blur(12px)', borderBottom:'1px solid rgba(154,114,53,0.12)'}}>
+      <header className="fixed top-0 left-0 right-0 z-50" style={{background: headerBg, backdropFilter:'blur(12px)', borderBottom:`1px solid ${borderColor}`}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link to="/" className="p-2 rounded-lg transition-colors" style={{color:'#9A8A78'}}>
+            <Link to="/" className="p-2 rounded-lg transition-colors" style={{color: mutedColor}}>
               <Home size={20} />
             </Link>
             {isMobile && (
               <button
                 onClick={() => setShowChapterList(!showChapterList)}
                 className="p-2 rounded-lg transition-colors"
-                style={{color:'#9A8A78'}}
+                style={{color: mutedColor}}
                 aria-label="Toggle chapter list"
               >
                 <List size={20} />
               </button>
             )}
-            <h1 className="text-2xl font-light tracking-[0.3em]" style={{fontFamily:'Playfair Display,serif', color:'#2A2018'}}>{story.title}</h1>
+            <h1 className="text-2xl font-light tracking-[0.3em]" style={{fontFamily:'Playfair Display,serif', color: headingColor}}>{story.title}</h1>
           </div>
           <div className="flex items-center gap-2">
+            <div className="sm:hidden flex items-center gap-1">
+            <button
+              onClick={() => {
+                const idx = TEXT_SIZES.findIndex(s => s.value === textSize);
+                if (idx > 0) {
+                  const newSize = TEXT_SIZES[idx - 1].value;
+                  setTextSize(newSize);
+                  saveTextSize(newSize);
+                }
+              }}
+              disabled={textSize === 'small'}
+              className="w-7 h-7 flex items-center justify-center rounded transition-colors"
+              style={{color: mutedColor, opacity: textSize === 'small' ? 0.3 : 1}}
+              aria-label="Decrease text size"
+            >
+              <span style={{fontSize:'12px', fontWeight:'bold'}}>A−</span>
+            </button>
+            <button
+              onClick={() => {
+                const idx = TEXT_SIZES.findIndex(s => s.value === textSize);
+                if (idx < TEXT_SIZES.length - 1) {
+                  const newSize = TEXT_SIZES[idx + 1].value;
+                  setTextSize(newSize);
+                  saveTextSize(newSize);
+                }
+              }}
+              disabled={textSize === 'xlarge'}
+              className="w-7 h-7 flex items-center justify-center rounded transition-colors"
+              style={{color: mutedColor, opacity: textSize === 'xlarge' ? 0.3 : 1}}
+              aria-label="Increase text size"
+            >
+              <span style={{fontSize:'16px', fontWeight:'bold'}}>A+</span>
+            </button>
+            <button
+              onClick={() => {
+                const newMode = !isDarkMode;
+                setIsDarkMode(newMode);
+                saveDarkMode(newMode);
+              }}
+              className="w-8 h-7 flex items-center justify-center rounded transition-colors"
+              style={{color: mutedColor, background: isDarkMode ? 'rgba(154,114,53,0.15)' : 'transparent'}}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDarkMode ? <span style={{fontSize:'16px'}}>☀</span> : <span style={{fontSize:'14px'}}>◐</span>}
+            </button>
+          </div>
+          <div className="flex items-center gap-2">
+            {/* Reading Controls */}
+            <div className="hidden sm:flex items-center gap-1 mr-2" style={{borderRight:`1px solid ${borderColor}`, paddingRight:'12px'}}>
+              {/* Text Size Controls */}
+              <div className="flex items-center gap-0.5">
+                <button
+                  onClick={() => {
+                    const idx = TEXT_SIZES.findIndex(s => s.value === textSize);
+                    if (idx > 0) {
+                      const newSize = TEXT_SIZES[idx - 1].value;
+                      setTextSize(newSize);
+                      saveTextSize(newSize);
+                    }
+                  }}
+                  disabled={textSize === 'small'}
+                  className="w-7 h-7 flex items-center justify-center rounded transition-colors"
+                  style={{
+                    color: mutedColor,
+                    opacity: textSize === 'small' ? 0.3 : 1
+                  }}
+                  aria-label="Decrease text size"
+                >
+                  <span style={{fontSize:'12px', fontWeight:'bold'}}>A−</span>
+                </button>
+                <button
+                  onClick={() => {
+                    const idx = TEXT_SIZES.findIndex(s => s.value === textSize);
+                    if (idx < TEXT_SIZES.length - 1) {
+                      const newSize = TEXT_SIZES[idx + 1].value;
+                      setTextSize(newSize);
+                      saveTextSize(newSize);
+                    }
+                  }}
+                  disabled={textSize === 'xlarge'}
+                  className="w-7 h-7 flex items-center justify-center rounded transition-colors"
+                  style={{
+                    color: mutedColor,
+                    opacity: textSize === 'xlarge' ? 0.3 : 1
+                  }}
+                  aria-label="Increase text size"
+                >
+                  <span style={{fontSize:'16px', fontWeight:'bold'}}>A+</span>
+                </button>
+              </div>
+              {/* Divider */}
+              <div className="w-px h-5 mx-2" style={{background:borderColor}} />
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={() => {
+                  const newMode = !isDarkMode;
+                  setIsDarkMode(newMode);
+                  saveDarkMode(newMode);
+                }}
+                className="w-8 h-7 flex items-center justify-center rounded transition-colors"
+                style={{color: mutedColor, background: isDarkMode ? 'rgba(154,114,53,0.15)' : 'transparent'}}
+                aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+              >
+                {isDarkMode ? (
+                  <span style={{fontSize:'16px'}}>☀</span>
+                ) : (
+                  <span style={{fontSize:'14px'}}>◐</span>
+                )}
+              </button>
+            </div>
             <button
               onClick={() => setIsReadMode(!isReadMode)}
               className="p-2 rounded-lg transition-colors"
@@ -1596,7 +1766,7 @@ export default function StoryPortal() {
                 <button
                   onClick={handleEnterEdit}
                   className="p-2 rounded-lg transition-colors"
-                  style={{color:'#9A8A78'}}
+                  style={{color: mutedColor}}
                   aria-label="Edit chapter"
                 >
                   <Edit3 size={20} />
@@ -1604,7 +1774,7 @@ export default function StoryPortal() {
                 <button
                   onClick={handleReset}
                   className="p-2 rounded-lg transition-colors"
-                  style={{color:'#9A8A78'}}
+                  style={{color: mutedColor}}
                   aria-label="Reset to default"
                 >
                   <Trash2 size={20} />
@@ -1613,12 +1783,6 @@ export default function StoryPortal() {
             )}
           </div>
         </div>
-
-        {/* Chapter Title */}
-        <div className="max-w-4xl mx-auto px-4 pb-3">
-          <h2 className="text-sm font-light tracking-wide" style={{color:'#9A8A78', fontFamily:'Cormorant Garamond,serif'}}>
-            {currentChapter?.title}
-          </h2>
         </div>
       </header>
 
@@ -1665,11 +1829,11 @@ export default function StoryPortal() {
                 className="block w-full text-left py-2.5 px-3 rounded-lg text-sm transition-colors"
                 style={{
                   background: index === activeChapter ? 'rgba(154,114,53,0.1)' : 'transparent',
-                  color: index === activeChapter ? '#2A2018' : '#9A8A78',
+                  color: index === activeChapter ? headingColor : mutedColor,
                   fontFamily:'Cormorant Garamond,serif'
                 }}
               >
-                <span className="mr-2" style={{color:'rgba(154,114,53,0.3)'}}>{index + 1}.</span>
+                <span className="mr-2" style={{color: index === activeChapter ? 'rgba(154,114,53,0.5)' : mutedColor}}>{index + 1}.</span>
                 {chapter.title}
               </button>
             ))}
@@ -1692,9 +1856,9 @@ export default function StoryPortal() {
                 onChange={(e) => setEditingContent(e.target.value)}
                 className="w-full h-[60vh] rounded-lg p-4 leading-relaxed resize-none focus:outline-none"
                 style={{
-                  background:'rgba(154,114,53,0.04)',
-                  border:'1px solid rgba(154,114,53,0.15)',
-                  color:'#5A4A38',
+                  background: isDarkMode ? 'rgba(30,30,30,0.9)' : 'rgba(154,114,53,0.04)',
+                  border: `1px solid ${borderColor}`,
+                  color: textColor,
                   fontFamily:'Cormorant Garamond,serif',
                   fontSize:'17px'
                 }}
@@ -1732,9 +1896,9 @@ export default function StoryPortal() {
               <div
                 style={{
                   fontFamily:'Cormorant Garamond,serif',
-                  color:'#5A4A38',
-                  lineHeight:'2',
-                  fontSize:'18px'
+                  color: textColor,
+                  lineHeight: currentTextSize.lineHeight,
+                  fontSize: currentTextSize.fontSize
                 }}
                 dangerouslySetInnerHTML={{ __html: currentChapter?.content || '' }}
               />
@@ -1744,7 +1908,7 @@ export default function StoryPortal() {
       </main>
 
       {/* Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50" style={{background:'linear-gradient(to top, #FFFDF7 60%, transparent)', paddingTop:'80px', paddingBottom:'20px'}}>
+      <nav className="fixed bottom-0 left-0 right-0 z-50" style={{background: navGradient, paddingTop:'80px', paddingBottom:'20px'}}>
         <div className={`max-w-4xl mx-auto px-4 flex items-center justify-between ${!isMobile ? 'pr-52' : ''}`}>
           <button
             onClick={prevChapter}
@@ -1752,8 +1916,8 @@ export default function StoryPortal() {
             className="p-3 rounded-full transition-all"
             style={{
               opacity: activeChapter === 0 ? 0.3 : 1,
-              color:'#9A7235',
-              background: activeChapter === 0 ? 'transparent' : 'rgba(154,114,53,0.05)'
+              color: isDarkMode ? '#C9A96E' : '#9A7235',
+              background: activeChapter === 0 ? 'transparent' : isDarkMode ? 'rgba(201,169,110,0.1)' : 'rgba(154,114,53,0.05)'
             }}
             aria-label="Previous chapter"
           >
@@ -1771,7 +1935,7 @@ export default function StoryPortal() {
                 style={{
                   width: index === activeChapter ? '24px' : '8px',
                   height: '8px',
-                  background: index === activeChapter ? '#9A7235' : index < activeChapter ? 'rgba(154,114,53,0.3)' : 'rgba(154,114,53,0.15)'
+                  background: index === activeChapter ? '#9A7235' : index < activeChapter ? isDarkMode ? 'rgba(201,169,110,0.4)' : 'rgba(154,114,53,0.3)' : 'rgba(154,114,53,0.15)'
                 }}
                 aria-label={`Go to chapter ${index + 1}`}
               />
@@ -1784,8 +1948,8 @@ export default function StoryPortal() {
             className="p-3 rounded-full transition-all"
             style={{
               opacity: activeChapter === story.chapters.length - 1 ? 0.3 : 1,
-              color:'#9A7235',
-              background: activeChapter === story.chapters.length - 1 ? 'transparent' : 'rgba(154,114,53,0.05)'
+              color: isDarkMode ? '#C9A96E' : '#9A7235',
+              background: activeChapter === story.chapters.length - 1 ? 'transparent' : isDarkMode ? 'rgba(201,169,110,0.1)' : 'rgba(154,114,53,0.05)'
             }}
             aria-label="Next chapter"
           >
