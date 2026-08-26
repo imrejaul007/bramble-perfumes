@@ -1753,37 +1753,6 @@ export default function StoryPortal() {
                 )}
               </button>
             </div>
-            <button
-              onClick={() => setIsReadMode(!isReadMode)}
-              className="p-2 rounded-lg transition-colors"
-              style={{
-                background: isReadMode ? 'rgba(154,114,53,0.1)' : 'transparent',
-                color: isReadMode ? '#9A7235' : '#9A8A78'
-              }}
-              aria-label="Toggle read mode"
-            >
-              <BookOpen size={20} />
-            </button>
-            {isReadMode && (
-              <>
-                <button
-                  onClick={handleEnterEdit}
-                  className="p-2 rounded-lg transition-colors"
-                  style={{color: mutedColor}}
-                  aria-label="Edit chapter"
-                >
-                  <Edit3 size={20} />
-                </button>
-                <button
-                  onClick={handleReset}
-                  className="p-2 rounded-lg transition-colors"
-                  style={{color: mutedColor}}
-                  aria-label="Reset to default"
-                >
-                  <Trash2 size={20} />
-                </button>
-              </>
-            )}
           </div>
         </div>
       </header>
