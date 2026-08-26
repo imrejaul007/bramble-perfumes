@@ -1620,6 +1620,16 @@ export default function StoryPortal() {
 
   return (
     <div className="min-h-screen" style={{background: bgColor}}>
+      {/* Reading Progress Bar */}
+      <div style={{position:'fixed', top:0, left:0, right:0, height:'3px', zIndex:100, background:'transparent'}}>
+        <div style={{
+          height:'100%',
+          width:`${((activeChapter + 1) / story.chapters.length) * 100}%`,
+          background:'linear-gradient(to right, #9A7235, #C9A96E)',
+          transition:'width 0.5s ease'
+        }}/>
+      </div>
+
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50" style={{background: headerBg, backdropFilter:'blur(12px)', borderBottom:`1px solid ${borderColor}`}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -1893,6 +1903,17 @@ export default function StoryPortal() {
               ref={contentRef}
               className="prose prose-lg max-w-none"
             >
+              {/* Chapter Header */}
+              <div style={{marginBottom: '2rem', textAlign: 'center'}}>
+                <div style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color:'#9A7235', fontSize:'13px', letterSpacing:'0.25em', textTransform:'uppercase', marginBottom:'0.75rem'}}>
+                  Chapter {activeChapter + 1}
+                </div>
+                <h2 style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', fontSize:'clamp(28px, 5vw, 40px)', color: headingColor, letterSpacing:'0.02em', lineHeight:1.2}}>
+                  {currentChapter?.title}
+                </h2>
+                <div style={{width:'40px', height:'1px', background:'#9A7235', margin:'1.25rem auto 0', opacity:0.6}}></div>
+              </div>
+
               <div
                 className="chapter-content"
                 style={{
@@ -1911,10 +1932,46 @@ export default function StoryPortal() {
                   font-weight: 600;
                   font-size: 1.5em;
                   display: block;
-                  margin-top: 2rem;
+                  margin-top: 2.5rem;
                   margin-bottom: 1rem;
                   line-height: 1.3;
                   letter-spacing: 0.01em;
+                }
+                .chapter-content p:first-of-type::first-letter {
+                  font-family: 'Cormorant Garamond', serif;
+                  font-size: 4em;
+                  font-weight: 600;
+                  float: left;
+                  line-height: 0.8;
+                  margin-right: 0.1em;
+                  margin-top: 0.1em;
+                  color: #9A7235;
+                }
+                .chapter-content p:has(strong:first-child) {
+                  margin-top: 0;
+                }
+                .chapter-content p:has(strong:first-child)::first-letter {
+                  font-size: 1em;
+                  float: none;
+                  margin: 0;
+                  color: inherit;
+                }
+                .chapter-content p:has(+ p strong) {
+                  margin-bottom: 0;
+                }
+                .chapter-content p:empty:has(+ p strong) {
+                  display: none;
+                }
+                .chapter-content p:empty {
+                  text-align: center;
+                  margin: 2rem 0;
+                }
+                .chapter-content p:empty::before {
+                  content: '— ✦ —';
+                  color: #9A7235;
+                  opacity: 0.5;
+                  font-size: 14px;
+                  letter-spacing: 0.3em;
                 }
               `}</style>
             </motion.div>
