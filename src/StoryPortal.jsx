@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, BookOpen, Edit3, Trash2, Save, Eye, X, Menu, List, AlignLeft, Home } from 'lucide-react'
 
@@ -1634,9 +1633,9 @@ export default function StoryPortal() {
       <header className="fixed top-0 left-0 right-0 z-50" style={{background: headerBg, backdropFilter:'blur(12px)', borderBottom:`1px solid ${borderColor}`}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Link to="/" className="p-2 rounded-lg transition-colors" style={{color: mutedColor}}>
+            <a href="https://nuhoud.com/" className="p-2 rounded-lg transition-colors" style={{color: mutedColor}}>
               <Home size={20} />
-            </Link>
+            </a>
             {isMobile && (
               <button
                 onClick={() => setShowChapterList(!showChapterList)}
