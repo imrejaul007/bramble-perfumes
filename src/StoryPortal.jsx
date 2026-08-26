@@ -1608,15 +1608,15 @@ export default function StoryPortal() {
   const currentChapter = story.chapters[activeChapter];
 
   // Dark mode styles
-  const bgColor = isDarkMode ? '#1A1A1A' : '#FFFDF7';
+  const bgColor = isDarkMode ? '#1A1A1A' : '#FFFFFF';
   const textColor = isDarkMode ? '#E8E0D5' : '#5A4A38';
   const headingColor = isDarkMode ? '#F5F0E8' : '#2A2018';
   const mutedColor = isDarkMode ? '#8A8078' : '#9A8A78';
-  const borderColor = isDarkMode ? 'rgba(154,114,53,0.2)' : 'rgba(154,114,53,0.12)';
-  const headerBg = isDarkMode ? 'rgba(26,26,26,0.95)' : 'rgba(255,253,247,0.92)';
+  const borderColor = isDarkMode ? 'rgba(154,114,53,0.2)' : 'rgba(154,114,53,0.08)';
+  const headerBg = isDarkMode ? 'rgba(26,26,26,0.98)' : 'rgba(255,255,255,0.98)';
   const navGradient = isDarkMode
     ? 'linear-gradient(to top, #1A1A1A 60%, transparent)'
-    : 'linear-gradient(to top, #FFFDF7 60%, transparent)';
+    : 'linear-gradient(to top, #FFFFFF 60%, transparent)';
 
   return (
     <div className="min-h-screen" style={{background: bgColor}}>
@@ -1805,7 +1805,7 @@ export default function StoryPortal() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               className="fixed top-24 left-0 right-0 z-40"
-              style={{background:'#FFFDF7', borderBottom:'1px solid rgba(154,114,53,0.12)'}}
+              style={{background:bgColor, borderBottom:`1px solid ${borderColor}`}}
             >
               <div className="max-h-[50vh] overflow-y-auto p-4">
                 {story.chapters.map((chapter, index) => (
@@ -1886,7 +1886,7 @@ export default function StoryPortal() {
                 <button
                   onClick={handleSave}
                   className="px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
-                  style={{background:'#9A7235', color:'#FFFDF7'}}
+                  style={{background:'#9A7235', color:'#FFFFFF'}}
                 >
                   <Save size={18} />
                   Save
