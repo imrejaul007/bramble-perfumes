@@ -1547,6 +1547,11 @@ export default function StoryPortal() {
     }
   }, [activeChapter]);
 
+  // Replace history so back button goes to nuhoud.com
+  useEffect(() => {
+    window.history.replaceState(null, '', window.location.href);
+  }, []);
+
   // Enter edit mode
   const handleEnterEdit = () => {
     isEditingRef.current = true;
