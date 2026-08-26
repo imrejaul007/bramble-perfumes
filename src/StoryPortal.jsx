@@ -1635,26 +1635,15 @@ export default function StoryPortal() {
       </div>
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50" style={{background: headerBg, backdropFilter:'blur(12px)', borderBottom:`1px solid ${borderColor}`}}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <a href="https://nuhoud.com/" className="p-2 rounded-lg transition-colors" style={{color: mutedColor}}>
-              <Home size={20} />
+      <header className="fixed top-0 left-0 right-0 z-50" style={{background: bgColor, borderBottom:`1px solid ${borderColor}`}}>
+        <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <a href="https://nuhoud.com/" className="text-sm tracking-widest uppercase" style={{fontFamily:'DM Sans, sans-serif', color: mutedColor, fontWeight:500}}>
+              ← Back
             </a>
-            {isMobile && (
-              <button
-                onClick={() => setShowChapterList(!showChapterList)}
-                className="p-2 rounded-lg transition-colors"
-                style={{color: mutedColor}}
-                aria-label="Toggle chapter list"
-              >
-                <List size={20} />
-              </button>
-            )}
-            <h1 className="font-light tracking-[0.3em]" style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color: headingColor, fontSize:'31px'}}>{story.title}</h1>
+            <h1 className="font-light tracking-[0.25em]" style={{fontFamily:'Cormorant Garamond, serif', fontWeight:'600', color: headingColor, fontSize:'26px'}}>{story.title}</h1>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="sm:hidden flex items-center gap-1">
+          <div className="flex items-center gap-1">
             <button
               onClick={() => {
                 const idx = TEXT_SIZES.findIndex(s => s.value === textSize);
@@ -1796,7 +1785,6 @@ export default function StoryPortal() {
               </>
             )}
           </div>
-        </div>
         </div>
       </header>
 
